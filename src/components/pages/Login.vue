@@ -30,34 +30,45 @@
     data() {
       return {
         email: '',
-        mdp: ''
+        mdp: '',
+        payload: ''
       };
     },
+    created() {
+      loginUser()
+    },
     methods: {
-      loginUser() {
-        console.log('email :', this.email);
+      loginUser(event) {
+        var form = document.querySelector('form');
+        console.log('email :', this.email)
+        this.loginUserWithXHR(event)
 
-        /* axios({
-          method: "post",
-          url: "http://localhost:8000/login",
-          data: {
-            email: this.email,
-            mdp: this.mdp
+
+      },
+      loginUserWithXHR(event) {
+        event.preventDefault();
+        console.log('logInUserWithXHR');
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/login', true);
+
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+        xhr.onreadystatechange = function () {
+          // appelle une fonction quand le statut change
+          if (xhr.readyState === XMLHttpRequest.DONE && xhr.status == 200) {
+            form.reset()
           }
-        }).then(response => {
-          console.log(response);
-          console.log('email : ', this.email);
-          console.log('mdp : ', this.mdp);
-
-
-
-
-
-        }) */
+        }
+        this.payload = `email=${this.email}&password=${this.mdp}`
+        xhr.send(payload)
 
 
 
       }
+
+
+
     }
   };
 

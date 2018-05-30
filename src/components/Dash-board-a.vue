@@ -3,7 +3,7 @@
     <div class="dash-board">
       <div class="carte-cont-1">
         <div class="carte">
-            <div class="nb1">{{nombreTotal}}} élèves</div>
+            <div @click="test" class="nb1">{{nombreTotal}} élèves</div>
             <div class="nb2">5 nbAbs absents ce jour</div>
         </div>
 
@@ -28,21 +28,46 @@
 
 <script>
 import Dashboardb from "./Dash-board-b";
-
-
+import axios from 'axios'
 export default {
   name: "dashboarda",
   components: {
     Dashboardb
+  },
+  data() {
+    return {
+      nombreTotal: null
+    };
+  },
+  methods: {
+    test() {
+      console.log("hello", this.$ebus);
+    },
+    getUsagers() {
+      const url = "http://localhost:8000/user";
+      axios.get(url).then(response => {
+        console.log("response data:", response.data);
+
+        this.usagers = response.data;
+        this.nombreTotal = response.data.length;
+        this.$ebus.$emit("nombre-total", this.nombreTotal);
+        console.log("________");
+        console.log("nombre total:", this.nombreTotal)
+      });
+    },
+  },
+  created() {
+    console.log("test");
+    this.getUsagers()
+
+    this.$ebus.$on("nombre-total", nombre => {
+      console.log(nombre);
+    });
   }
 };
-
-
 </script>
 
 <style scoped>
-
-
 .dash-board {
   margin-top: 50px;
 }

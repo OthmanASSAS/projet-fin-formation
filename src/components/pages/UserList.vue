@@ -48,20 +48,21 @@ export default {
       nombreTotal: null
     };
   },
-  created() {
+  mounted() {
     this.getUsagers();
-    
-    
-    
+    console.log("nombre total:", this.nombreTotal);
   },
   methods: {
     getUsagers() {
       const url = "http://localhost:8000/user";
       axios.get(url).then(response => {
-        console.log('response data:', response.data);
+        console.log("response data:", response.data);
+
         this.usagers = response.data;
-        this.nombreTotal = response.data.length
+        this.nombreTotal = response.data.length;
+        this.$ebus.$emit("nombre-total", this.nombreTotal);
         console.log("________");
+        console.log("nombre total:", this.nombreTotal);
       });
     },
     enregistrer() {
@@ -71,18 +72,21 @@ export default {
       console.log("usager :", usager.id);
 
       const url = "http://localhost:8000/user/delete/" + usager.id;
-      axios.delete(url)
+      axios
+        .delete(url)
         .then(response => {
           console.log(response.data);
-       /*  if (response.data.affectedRows){ this.$router.push({name: 'login'})} */
+          /*  if (response.data.affectedRows){ this.$router.push({name: 'login'})} */
           console.log("________");
+          if (response) {
+            this.getUsagers();
+          }
         })
         .catch(err => {
-          console.error('error axios');
-          
+          console.error("error axios");
+
           console.error(err);
         });
- 
     },
     changeBoutonStatut(u) {
       console.log("clic");
