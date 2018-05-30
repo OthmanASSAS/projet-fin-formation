@@ -82,7 +82,7 @@ app.delete('/user/delete/:id', (req, res) => {
 
 /* Fin supprimer utilisateur */
 
-/* Début modification patch */
+/* Début modification put */
 app.put('/user/update/:id', (req, res) => {
     console.log(req.body.datenaissance);
 
