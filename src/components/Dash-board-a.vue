@@ -44,7 +44,7 @@ export default {
       console.log("hello", this.$ebus);
     },
     getUsagers() {
-      const url = "http://localhost:8000/user";
+      const url = "http://51.15.224.76:8000/user";
       axios.get(url).then(response => {
         console.log("response data:", response.data);
 

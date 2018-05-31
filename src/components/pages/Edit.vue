@@ -76,7 +76,7 @@ export default {
 
   methods: {
     getUsager(id) {
-      const url = "http://localhost:8000/userfiche/" + id;
+      const url = "http://51.15.224.76:8000/userfiche/" + id;
       console.log("url:", url);
       console.log("id :", id);
 
@@ -100,7 +100,7 @@ export default {
       
       axios({
           method: "put",
-          url: "http://localhost:8000/user/update/" + this.$route.params.id,
+          url: "http://51.15.224.76:8000/user/update/" + this.$route.params.id,
           data: {
             id: this.$el.querySelector("#id").value,
             nom: this.$el.querySelector("#nom").value,
