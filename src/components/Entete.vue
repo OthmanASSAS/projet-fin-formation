@@ -6,10 +6,7 @@
       <div class="logo">
 <p>Gest-Easy</p>
       </div>
-      <div class="recherche">
-
-<input type="text" value="Recherche">
-      </div>
+      
       <div class="login">
           <router-link :to="'/login'"><p>Login</p></router-link>
       </div>

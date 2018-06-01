@@ -11,8 +11,7 @@
  <form @submit.prevent="updateUsager">
  <table  class="table table-striped">
  
- <tr><th>Id:</th>
-    <td><input id="id" type="text" name="name" v-model="usager.id"></td></tr>
+
  <tr><th>Nom:</th>
     <td><input id="nom" type="text" name="name" v-model="usager.nom"></td></tr>
  <tr><th>Prénom:</th>
@@ -36,7 +35,17 @@
 v-bind:class="{paiementincomplet: !usager.statutpaiement}"
 v-on:click="changeBoutonStatut(usager)">{{usager.statutpaiement ? "payé" : "impayé"}}</button>
 </td></tr>
+<tr><th>Classe :</th>
+    <td><select name="pays" id="classe" v-model="usager.classe">
+           <option value="1H">1H</option>
+           <option value="1SH">1SH</option>
+           <option value="2H">2H</option>
+           <option value="3H">3H</option>
+           <option value="4H">4H</option>
+       </select></td></tr>
+     
     </table>
+
     <button type="submit" class="btn btn-primary" @click="updateUsager">Valider</button>
     </form>
 
@@ -111,7 +120,8 @@ export default {
             ville: this.$el.querySelector("#ville").value,
             tel: this.$el.querySelector("#tel").value,
             email: this.$el.querySelector("#email").value,
-            profession: this.$el.querySelector("#profession").value
+            profession: this.$el.querySelector("#profession").value,
+            classe: this.$el.querySelector("#classe").value
           }
         })
 

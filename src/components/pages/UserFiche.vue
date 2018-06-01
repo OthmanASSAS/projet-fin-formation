@@ -37,6 +37,8 @@
 v-bind:class="{paiementincomplet: !usager.statutpaiement}"
 v-on:click="changeBoutonStatut(usager)">{{usager.statutpaiement ? "payé" : "impayé"}}</button>
 </td></tr>
+<tr><th>Classe :</th>
+    <td>{{usager.classe}}</td></tr>
     </table>
 
 

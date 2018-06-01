@@ -6,6 +6,7 @@ import Login from "./components/pages/Login";
 import Userlist from "./components/pages/Userlist";
 import UserFiche from "./components/pages/Userfiche";
 import Edit from "./components/pages/Edit";
+import Editclasse from "./components/pages/Editclasse";
 // import Userfiche from "./components/pages/Userfiche";
 
 export const routes = [
@@ -39,5 +40,10 @@ export const routes = [
         path: '/edit/:id',
         name: 'edit',
         component: Edit
+    },
+    {
+        path: '/editclasse',
+        name: 'editclasse',
+        component: Editclasse
     }
 ];

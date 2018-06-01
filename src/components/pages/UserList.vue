@@ -1,19 +1,22 @@
 <template>
   <div class="userlist container">
+    <br/>
    <h1>Nombre d'élèves total : {{nombreTotal}}</h1>
    <br/>
-    
+    <input type="text" class="form-control" placeholder="Recherche par nom..." v-model="filterInput" >
+    <br/>
 <table class="table table-striped">
 <thead> 
   <tr>
     <th>Id</th>
-    <th>Name</th>
+    <th>Name <button class="btn btn-outline-secondary" @click="ordreCroissant">↑</button>
+    <button class="btn btn-outline-secondary" @click="ordreDecroissant">↓</button>  </th>
     <th>UserName</th>
     <th></th>
   </tr>
 </thead>
 <tbody>
-  <tr v-for="(usager, n) in usagers" :key="n">
+  <tr v-for="(usager, n) in filterBy(usagers, filterInput)" :key="n" >
     <td>{{usager.id}}</td>
     <td>{{usager.nom}}</td>
     <td>{{usager.prenom}}</td>
@@ -45,12 +48,16 @@ export default {
       statutPaiement: false,
       boutonStatut: "Impayé",
       usagers: [],
-      nombreTotal: null
+      nombreTotal: null,
+      filterInput: ''
+     
     };
   },
   mounted() {
     this.getUsagers();
     console.log("nombre total:", this.nombreTotal);
+    this.filtrerPar();
+    this.majuscule()
   },
   methods: {
     getUsagers() {
@@ -65,9 +72,36 @@ export default {
         console.log("nombre total:", this.nombreTotal);
       });
     },
-    enregistrer() {
+    tri(a, b) {
       console.log("Sauvegardé");
+      if(a.nom < b.nom) return -1;
+      else if (a.nom == b.nom) return 0;
+      else return 1;
     },
+
+    ordreCroissant(){
+      this.usagers.sort(this.tri)
+    },
+
+    triDecroissant(a, b){
+ if(a.nom > b.nom) return -1;
+      else if (a.nom == b.nom) return 0;
+      else return 1;
+    }, 
+
+    ordreDecroissant(){
+       this.usagers.sort(this.triDecroissant)
+    },
+    filterBy(list, value){
+      // value = value.charAt(0).toUpperCase() + value.slice(1)
+return list.filter(function(usager){
+  return usager.nom.indexOf(value)> -1
+})
+    },
+
+
+    
+
     supprimerUsager(usager) {
       console.log("usager :", usager.id);
 
@@ -92,7 +126,7 @@ export default {
       console.log("clic");
       console.log(u.statutpaiement);
       u.statutpaiement = !u.statutpaiement;
-    }
+    },
   }
 };
 </script>
@@ -130,9 +164,10 @@ li {
 .paiementincomplet {
   background-color: rgb(250, 132, 142);
 }
-
 input {
-  margin: 10px;
+  font-size: 16px
 }
+
+
 </style>
 

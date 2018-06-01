@@ -85,8 +85,9 @@ app.delete('/user/delete/:id', (req, res) => {
 /* Début modification put */
 app.put('/user/update/:id', (req, res) => {
     console.log(req.body.datenaissance);
+    console.log('classe:', req.body.classe);
 
-    const sql = `UPDATE user SET nom = ${connection.escape(req.body.nom)}, prenom = ${connection.escape(req.body.prenom)}, datenaissance = ${connection.escape(req.body.datenaissance)}, adresse = ${connection.escape(req.body.adresse)}, cp = ${connection.escape(req.body.cp)}, ville = ${connection.escape(req.body.ville)}, tel = ${connection.escape(req.body.tel)}, email = ${connection.escape(req.body.email)}, profession = ${connection.escape(req.body.profession)} WHERE id=?`
+const sql = `UPDATE user SET nom = ${connection.escape(req.body.nom)}, prenom = ${connection.escape(req.body.prenom)}, datenaissance = ${connection.escape(req.body.datenaissance)}, adresse = ${connection.escape(req.body.adresse)}, cp = ${connection.escape(req.body.cp)}, ville = ${connection.escape(req.body.ville)}, tel = ${connection.escape(req.body.tel)}, email = ${connection.escape(req.body.email)}, profession = ${connection.escape(req.body.profession)}, classe = ${connection.escape(req.body.classe)} WHERE id=?`
 
     console.log('côté serveur');
 

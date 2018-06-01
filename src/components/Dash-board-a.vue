@@ -4,12 +4,12 @@
       <div class="carte-cont-1">
         <div class="carte">
             <div @click="test" class="nb1">{{nombreTotal}} élèves</div>
-            <div class="nb2">5 nbAbs absents ce jour</div>
+            <div class="nb2">5 absents ce jour</div>
         </div>
 
         <div class="carte">
-            <div class="nb1">10 nbEnsT Enseignants</div>
-            <div class="nb2">5 nbPrst présents ce jour</div>
+            <div class="nb1">10 Enseignants</div>
+            <div class="nb2">6 présents ce jour</div>
         </div>
 
         <div class="carte">Evènements</div>
@@ -68,6 +68,10 @@ export default {
 </script>
 
 <style scoped>
+*{
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif
+}
 .dash-board {
   margin-top: 50px;
 }
@@ -81,8 +85,10 @@ export default {
 .nb1,
 .nb2 {
   padding: 7px;
-  background-color: rgba(139, 218, 238, 0.7);
-  border-radius: 10px;
+  background-color: #F7F7F7;
+  /* border-radius: 5px; */
+
+  
 }
 .carte {
   margin: 10px;
@@ -90,6 +96,7 @@ export default {
   width: 20%;
   min-width: 200px;
   box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.5);
+  
 }
 
 .nb1 {

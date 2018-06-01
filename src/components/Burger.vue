@@ -16,8 +16,9 @@
     </div>
   </div> 
     <router-link to="/userlist">Consulter</router-link>
+    <router-link to="/editclasse">Classes</router-link>
 
-  <a href="#about">Classes</a>
+  
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" v-on:click="myFunction()">&#9776;</a>
 </div>
 
