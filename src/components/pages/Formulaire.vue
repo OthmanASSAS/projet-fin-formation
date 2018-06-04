@@ -72,7 +72,7 @@ export default {
       } else {
       axios({
         method: "post",
-        url: "http://51.15.224.76:8000/dataFormulaire",
+        url: "http://51.15.224.76:80/dataFormulaire",
         data:{
           nom: this.$el.querySelector("#nom").value,
           prenom: this.$el.querySelector("#prenom").value,

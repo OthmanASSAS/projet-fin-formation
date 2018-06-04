@@ -85,7 +85,7 @@ export default {
 
   methods: {
     getUsager(id) {
-      const url = "http://51.15.224.76:8000/userfiche/" + id;
+      const url = "http://51.15.224.76:80/userfiche/" + id;
       console.log("url:", url);
       console.log("id :", id);
 
@@ -109,7 +109,7 @@ export default {
       
       axios({
           method: "put",
-          url: "http://51.15.224.76:8000/user/update/" + this.$route.params.id,
+          url: "http://51.15.224.76:80/user/update/" + this.$route.params.id,
           data: {
             nom: this.$el.querySelector("#nom").value,
             prenom: this.$el.querySelector("#prenom").value,

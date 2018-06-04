@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     getUsagers() {
-      const url = "http://51.15.224.76:8000/user";
+      const url = "http://51.15.224.76:80/user";
       axios.get(url).then(response => {
         console.log("response data:", response.data);
 
@@ -105,7 +105,7 @@ return list.filter(function(usager){
     supprimerUsager(usager) {
       console.log("usager :", usager.id);
 
-      const url = "http://51.15.224.76:8000/user/delete/" + usager.id;
+      const url = "http://51.15.224.76:80/user/delete/" + usager.id;
       axios
         .delete(url)
         .then(response => {
