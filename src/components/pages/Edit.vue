@@ -111,7 +111,6 @@ export default {
           method: "put",
           url: "http://51.15.224.76:8000/user/update/" + this.$route.params.id,
           data: {
-            id: this.$el.querySelector("#id").value,
             nom: this.$el.querySelector("#nom").value,
             prenom: this.$el.querySelector("#prenom").value,
             datenaissance: this.$el.querySelector("#datenaissance").value,
