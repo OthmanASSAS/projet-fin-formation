@@ -77,7 +77,7 @@ export default {
 
   methods: {
     getUsager(id) {
-      const url = "http://51.15.224.76:80/userfiche/" + id;
+      const url = "http://51.15.224.76:8000/userfiche/" + id;
       console.log("url:", url);
       console.log("id :", id);
 
