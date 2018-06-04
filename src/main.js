@@ -12,6 +12,11 @@ const router = new VueRouter({
   routes
 })
 
+
+
+const urlAxiosBuild = "http://51.15.224.76:8000"
+const urlAxiosDev = "http://localhost:8000"
+
 new Vue({
   el: '#app',
 router,
